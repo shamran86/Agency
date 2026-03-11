@@ -20,7 +20,7 @@ function HeroSection() {
       <div className="relative mx-auto min-h-screen max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
         <HeroNavbar />
 
-        <div className="mx-auto flex max-w-5xl flex-col items-center pb-16 pt-10 text-center md:pt-14">
+        <div className="mx-auto flex max-w-5xl flex-col items-center pb-8 pt-10 text-center md:pt-14">
           <div className="rainbow relative z-0 mt-2 overflow-hidden rounded-full bg-white/15 p-px">
             <div className="flex items-center justify-center gap-3 rounded-full bg-[#1d052d]/85 px-4 py-3 font-medium text-[#f6e8ff] backdrop-blur">
               <div className="relative flex h-3.5 w-3.5 items-center justify-center">
@@ -60,7 +60,7 @@ function HeroSection() {
 
           <a
             href="#services"
-            className="mt-20 flex animate-bounce flex-col items-center gap-4 text-[#c89ae7]/70 transition hover:text-[#f6e8ff]"
+            className="mt-12 flex animate-bounce flex-col items-center gap-4 text-[#c89ae7]/70 transition hover:text-[#f6e8ff]"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
