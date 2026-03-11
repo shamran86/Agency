@@ -81,7 +81,7 @@ function HeroNavbar() {
 
   return (
     <header className="pt-4">
-      <div className="relative mx-auto max-w-5xl">
+      <div className="mx-auto max-w-5xl">
         <nav className="mx-auto flex w-full max-w-fit items-center justify-between rounded-full border border-white/15 bg-[#13051f]/65 px-5 py-4 text-sm text-white backdrop-blur-md sm:px-6 md:min-w-[760px] md:justify-center lg:min-w-[860px]">
           <div className="flex w-full items-center justify-between md:w-auto">
             <BrandIcon />
@@ -101,24 +101,26 @@ function HeroNavbar() {
         </nav>
 
         <div
-          className={`absolute left-1/2 right-auto top-[calc(100%+1rem)] flex w-[calc(100%-2rem)] max-w-md -translate-x-1/2 flex-col items-center gap-4 rounded-[28px] border border-white/10 bg-[#090010]/92 px-6 py-6 text-base text-[#f0ddff] backdrop-blur-xl transition-all duration-300 md:hidden ${
-            isMenuOpen
-              ? 'visible flex translate-y-0 opacity-100'
-              : 'invisible flex -translate-y-2 opacity-0'
+          className={`mx-auto grid w-full max-w-md overflow-hidden transition-all duration-300 md:hidden ${
+            isMenuOpen ? 'mt-4 grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
           }`}
         >
-          {navigationItems.map((item) => (
-            <a
-              key={item.label}
-              className="transition hover:text-white"
-              href={item.href}
-              onClick={closeMenu}
-            >
-              {item.label}
-            </a>
-          ))}
-          <OutlineButton className="w-full">Contact</OutlineButton>
-          <GlowButton className="w-full">Get Started</GlowButton>
+          <div className="min-h-0">
+            <div className="flex flex-col items-center gap-4 rounded-[28px] border border-white/10 bg-[#090010]/92 px-6 py-6 text-base text-[#f0ddff] backdrop-blur-xl">
+              {navigationItems.map((item) => (
+                <a
+                  key={item.label}
+                  className="transition hover:text-white"
+                  href={item.href}
+                  onClick={closeMenu}
+                >
+                  {item.label}
+                </a>
+              ))}
+              <OutlineButton className="w-full">Contact</OutlineButton>
+              <GlowButton className="w-full">Get Started</GlowButton>
+            </div>
+          </div>
         </div>
       </div>
     </header>
