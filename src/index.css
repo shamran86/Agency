@@ -61,6 +61,34 @@ a {
   }
 }
 
+@keyframes testimonials-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+@keyframes testimonials-scroll-reverse {
+  0% {
+    transform: translateX(calc(-50% - 12px));
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.testimonials-scroll {
+  animation: testimonials-scroll 18s linear infinite;
+}
+
+.testimonials-scroll-reverse {
+  animation: testimonials-scroll-reverse 18s linear infinite;
+}
+
 .rainbow::before {
   content: '';
   position: absolute;
