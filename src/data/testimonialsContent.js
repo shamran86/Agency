@@ -7,7 +7,7 @@ export const testimonials = [
   },
   {
     text: 'The website redesign gave us a sharper brand presence and a clearer conversion path. It felt strategic, not just visual polish.',
-    name: 'Rohan Mehta',
+    name: 'afran rahiman',
     role: 'Startup founder',
     image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200',
   },
