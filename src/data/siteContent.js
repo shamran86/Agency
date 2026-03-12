@@ -1,8 +1,8 @@
 export const navigationItems = [
-  { label: 'Products', href: '#products' },
-  { label: 'Stories', href: '#stories' },
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Docs', href: '#docs' },
+  { label: 'Features', href: '#features' },
+  { label: 'Services', href: '#services' },
+  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export const trustedBrands = [

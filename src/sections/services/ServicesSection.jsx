@@ -19,7 +19,7 @@ function ServicesSection() {
   }
 
   return (
-    <section className="relative overflow-hidden bg-[#050009] px-4 py-14 text-white sm:px-6 lg:px-8">
+    <section id="services" className="relative overflow-hidden bg-[#050009] px-4 py-14 text-white sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(181,74,255,0.12),transparent_22%),linear-gradient(180deg,rgba(7,0,13,0.92),rgba(10,0,18,1))]" />
 
       <div className="relative mx-auto max-w-6xl">

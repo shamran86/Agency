@@ -95,8 +95,12 @@ function HeroNavbar() {
           </div>
 
           <div className="ml-10 hidden items-center gap-3 md:flex lg:ml-12 lg:gap-4">
-            <OutlineButton>Contact</OutlineButton>
-            <GlowButton>Get Started</GlowButton>
+            <a href="#contact">
+              <OutlineButton>Contact</OutlineButton>
+            </a>
+            <a href="#contact">
+              <GlowButton>Get Started</GlowButton>
+            </a>
           </div>
         </nav>
 
@@ -117,8 +121,12 @@ function HeroNavbar() {
                   {item.label}
                 </a>
               ))}
-              <OutlineButton className="w-full">Contact</OutlineButton>
-              <GlowButton className="w-full">Get Started</GlowButton>
+              <a href="#contact" className="w-full" onClick={closeMenu}>
+                <OutlineButton className="w-full">Contact</OutlineButton>
+              </a>
+              <a href="#contact" className="w-full" onClick={closeMenu}>
+                <GlowButton className="w-full">Get Started</GlowButton>
+              </a>
             </div>
           </div>
         </div>

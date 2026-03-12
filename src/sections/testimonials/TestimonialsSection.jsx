@@ -42,7 +42,7 @@ function TestimonialCard({ testimonial }) {
 
 function TestimonialsSection() {
   return (
-    <section className="relative overflow-hidden bg-[#040008] px-4 py-16 text-white sm:px-6 lg:px-8">
+    <section id="testimonials" className="relative overflow-hidden bg-[#040008] px-4 py-16 text-white sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(175,75,255,0.12),transparent_28%),linear-gradient(180deg,rgba(8,0,15,0.88),rgba(6,0,10,1))]" />
 
       <div className="relative mx-auto max-w-6xl">

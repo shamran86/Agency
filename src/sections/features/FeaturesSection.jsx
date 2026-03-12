@@ -1,6 +1,6 @@
 function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#07000d] px-4 py-12 text-white sm:px-6 lg:px-8">
+    <section id="features" className="relative overflow-hidden bg-[#07000d] px-4 py-12 text-white sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(181,74,255,0.14),transparent_30%),linear-gradient(180deg,rgba(10,0,20,0.1),rgba(10,0,20,0.85))]" />
 
       <div className="relative mx-auto max-w-6xl">
