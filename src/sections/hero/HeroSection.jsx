@@ -28,23 +28,22 @@ function HeroSection() {
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-[#ff58ff]" />
               </div>
               <span className="text-xs tracking-[0.18em] text-[#f6e8ff] uppercase">
-                Designed for Modern Websites
+                THE FUTURE OF DIGITAL ARCHITECTURE
               </span>
             </div>
           </div>
 
           <h1 className="mt-1 max-w-4xl text-4xl font-semibold leading-tight text-[#fff2ff] sm:text-5xl lg:text-[64px] lg:leading-[1.15]">
-            Build stunning websites that convert and scale
+            We Build. We Automate. You Dominate.
           </h1>
 
           <p className="mt-5 max-w-2xl text-sm leading-7 text-[#d8b2eb] sm:text-base">
-            A flexible hero section designed to work across startups, SaaS products,
-            portfolios, and landing pages.
+            High-performance websites, Intelligent AI agents. One studio that delivers both.
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <PrimaryButton>Get started today</PrimaryButton>
-            <SecondaryButton>Our products</SecondaryButton>
+            <SecondaryButton>View our work</SecondaryButton>
           </div>
 
           <div className="mt-16 flex flex-wrap items-center justify-center gap-3 text-sm text-[#d0a7e8]/70 sm:gap-4">

@@ -9,11 +9,11 @@ function FeaturesSection() {
             Seamless Integrations
           </span>
           <h2 className="mt-5 bg-gradient-to-r from-[#fff4ff] via-[#efc3ff] to-[#de73ff] bg-clip-text text-3xl font-semibold text-transparent sm:text-4xl lg:text-5xl">
-            Built to plug into the tools your team already uses.
+            Intelligently woven into your existing ecosystem,
           </h2>
           <p className="mt-4 max-w-2xl text-sm leading-7 text-[#e0bdf0] sm:text-base">
-            Connect design, collaboration, and delivery in one workflow so your team can
-            move faster without rebuilding the stack they already rely on.
+            Bridge the gap between design and delivery with custom-fitted integrations. Our
+            solutions enhance the tools you already trust, creating a unified workflow that operates with effortless precision.
           </p>
         </div>
 
