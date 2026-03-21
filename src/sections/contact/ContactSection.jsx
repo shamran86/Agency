@@ -60,7 +60,8 @@ function ContactSection() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <ContactDetail label="Email" value="hello@agency.dev" href="mailto:hello@agency.dev" />
+              <ContactDetail label="Email" value="lucim.io.ai
+              @gmail.com" href="mailto:lucim.io.ai@gmail,com" />
               <ContactDetail label="Book a call" value="Schedule a discovery call" href="#contact" />
             </div>
 
