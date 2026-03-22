@@ -1,7 +1,7 @@
 import HeroSection from '../sections/hero/HeroSection'
 import FeaturesSection from '../sections/features/FeaturesSection'
 import ServicesSection from '../sections/services/ServicesSection'
-import TestimonialsSection from '../sections/testimonials/TestimonialsSection'
+import PortfolioStrip from '../components/ui/PortfolioStrip'
 import ContactSection from '../sections/contact/ContactSection'
 import FooterSection from '../sections/footer/FooterSection'
 
@@ -11,7 +11,7 @@ function HomePage() {
       <HeroSection />
       <FeaturesSection />
       <ServicesSection />
-      <TestimonialsSection />
+      <PortfolioStrip />
       <ContactSection />
       <FooterSection />
     </main>
