@@ -4,12 +4,9 @@ import { navigationItems } from '../../../data/siteContent'
 function BrandIcon() {
   return (
     <a href="/" aria-label="Agency home" className="shrink-0">
-      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-        <circle cx="4.706" cy="16" r="4.706" fill="#F6E8FF" />
-        <circle cx="16.001" cy="4.706" r="4.706" fill="#F6E8FF" />
-        <circle cx="16.001" cy="27.294" r="4.706" fill="#F6E8FF" />
-        <circle cx="27.294" cy="16" r="4.706" fill="#F6E8FF" />
-      </svg>
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-[0_0_30px_7px_rgba(255,255,255,0.35)] transition duration-300 hover:bg-[#f7ebff] hover:shadow-[0_0_30px_14px_rgba(255,255,255,0.45)]">
+        <span className="text-sm font-bold text-[#16001f]">L</span>
+      </div>
     </a>
   )
 }
