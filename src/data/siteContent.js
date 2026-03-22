@@ -1,7 +1,6 @@
 export const navigationItems = [
   { label: 'Features', href: '#features' },
   { label: 'Services', href: '#services' },
-  ,
 ]
 
 export const trustedBrands = [
