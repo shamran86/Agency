@@ -51,10 +51,10 @@ function TestimonialsSection() {
             <span className="text-xs uppercase tracking-[0.24em] text-[#e8c7fb]">Loved by clients</span>
           </div>
           <h2 className="mt-5 bg-gradient-to-r from-[#fff4ff] via-[#efc3ff] to-[#de73ff] bg-clip-text text-3xl font-semibold text-transparent sm:text-4xl lg:text-5xl">
-            What clients say after launch
+            What You Can Expect From us
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#e0bdf0] sm:text-base">
-            Feedback from teams using our websites, automation systems, and secure production-ready workflows.
+            Clear communication, a collaborative approach, and a commitment to delivering high-quality results that exceed your expectations. 
           </p>
         </div>
 
