@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PrimaryButton from '../../components/ui/PrimaryButton'
 import SecondaryButton from '../../components/ui/SecondaryButton'
 
@@ -13,26 +14,34 @@ function ContactDetail({ label, value, href }) {
   )
 }
 
-function Input({ label, type = 'text', placeholder }) {
+function Input({ label, type = 'text', placeholder, name, value, onChange }) {
   return (
     <label className="block">
       <span className="mb-2 block text-sm text-[#d9b7ea]">{label}</span>
       <input
         type={type}
+        name={name}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required
         className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-[#fff2ff] outline-none transition placeholder:text-[#a98cbc] focus:border-[#ff63f6]/60 focus:bg-white/[0.06]"
       />
     </label>
   )
 }
 
-function Textarea({ label, placeholder }) {
+function Textarea({ label, placeholder, name, value, onChange }) {
   return (
     <label className="block">
       <span className="mb-2 block text-sm text-[#d9b7ea]">{label}</span>
       <textarea
         rows="5"
+        name={name}
         placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        required
         className="w-full rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-[#fff2ff] outline-none transition placeholder:text-[#a98cbc] focus:border-[#ff63f6]/60 focus:bg-white/[0.06]"
       />
     </label>
@@ -40,6 +49,47 @@ function Textarea({ label, placeholder }) {
 }
 
 function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    projectType: '',
+    details: '',
+  })
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
+
+  function handleChange(e) {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setStatus('loading')
+
+    try {
+      const res = await fetch('https://formspree.io/f/xpqygwje', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          projectType: formData.projectType,
+          details: formData.details,
+        }),
+      })
+
+      if (res.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', company: '', projectType: '', details: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <section id="contact" className="relative overflow-hidden bg-[#040008] px-4 py-16 text-white sm:px-6 lg:px-8">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,88,255,0.12),transparent_26%),linear-gradient(180deg,rgba(9,0,16,0.88),rgba(5,0,8,1))]" />
@@ -60,8 +110,7 @@ function ContactSection() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <ContactDetail label="Email" value="lucim.io.ai
-              @gmail.com" href="mailto:lucim.io.ai@gmail,com" />
+              <ContactDetail label="Email" value="lucim.io.ai@gmail.com" href="mailto:lucim.io.ai@gmail.com" />
               <ContactDetail label="Book a call" value="Schedule a discovery call" href="#contact" />
             </div>
 
@@ -72,31 +121,59 @@ function ContactSection() {
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(27,8,41,0.92),rgba(10,1,18,0.98))] p-6 shadow-[0_0_80px_rgba(173,78,255,0.08)] backdrop-blur sm:p-8">
-            <form className="grid gap-5">
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Input label="Name" placeholder="Your name" />
-                <Input label="Email" type="email" placeholder="you@company.com" />
-              </div>
 
-              <div className="grid gap-5 sm:grid-cols-2">
-                <Input label="Company" placeholder="Company or brand" />
-                <Input label="Project type" placeholder="Website, automation, security" />
-              </div>
-
-              <Textarea
-                label="Project details"
-                placeholder="Tell us about your goals, current stack, timeline, or the systems you want to improve."
-              />
-
-              <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            {status === 'success' ? (
+              <div className="flex h-full flex-col items-center justify-center gap-4 py-16 text-center">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#ff58ff]/15">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M6 16L12 22L26 8" stroke="#ff58ff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-[#fff2ff]">Message sent!</h3>
                 <p className="text-sm text-[#cfa8e8]">
-                  We usually respond within 1-2 business days.
+                  Thanks for reaching out. We'll get back to you within 1–2 business days.
                 </p>
-                <PrimaryButton type="submit" className="justify-center">
-                  Send inquiry
-                </PrimaryButton>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="mt-2 text-sm text-[#ff58ff] underline underline-offset-4 hover:opacity-80"
+                >
+                  Send another message
+                </button>
               </div>
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="grid gap-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Input label="Name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} />
+                  <Input label="Email" name="email" type="email" placeholder="you@company.com" value={formData.email} onChange={handleChange} />
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <Input label="Company" name="company" placeholder="Company or brand" value={formData.company} onChange={handleChange} />
+                  <Input label="Project type" name="projectType" placeholder="Website, automation, security" value={formData.projectType} onChange={handleChange} />
+                </div>
+
+                <Textarea
+                  label="Project details"
+                  name="details"
+                  placeholder="Tell us about your goals, current stack, timeline, or the systems you want to improve."
+                  value={formData.details}
+                  onChange={handleChange}
+                />
+
+                {status === 'error' && (
+                  <p className="text-sm text-red-400">Something went wrong. Please try again or email us directly.</p>
+                )}
+
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p className="text-sm text-[#cfa8e8]">
+                    We usually respond within 1–2 business days.
+                  </p>
+                  <PrimaryButton type="submit" className="justify-center" disabled={status === 'loading'}>
+                    {status === 'loading' ? 'Sending...' : 'Send inquiry'}
+                  </PrimaryButton>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>
