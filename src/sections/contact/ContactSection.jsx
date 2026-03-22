@@ -9,7 +9,7 @@ function ContactDetail({ label, value, href }) {
       className="rounded-[22px] border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.06]"
     >
       <p className="text-xs uppercase tracking-[0.22em] text-[#cfa8e8]">{label}</p>
-      <p className="mt-3 text-lg font-medium text-[#fff2ff]">{value}</p>
+      <p className="mt-3 text-base font-medium text-[#fff2ff] break-all leading-snug">{value}</p>
     </a>
   )
 }
