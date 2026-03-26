@@ -6,6 +6,8 @@ function ContactDetail({ label, value, href }) {
   return (
     <a
       href={href}
+      target={href.startsWith('http') ? '_blank' : undefined}
+      rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
       className="rounded-[22px] border border-white/10 bg-white/[0.04] p-5 transition hover:bg-white/[0.06]"
     >
       <p className="text-xs uppercase tracking-[0.22em] text-[#cfa8e8]">{label}</p>
@@ -56,7 +58,7 @@ function ContactSection() {
     projectType: '',
     details: '',
   })
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [status, setStatus] = useState('idle')
 
   function handleChange(e) {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -65,20 +67,12 @@ function ContactSection() {
   async function handleSubmit(e) {
     e.preventDefault()
     setStatus('loading')
-
     try {
       const res = await fetch('https://formspree.io/f/xpqygwje', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          projectType: formData.projectType,
-          details: formData.details,
-        }),
+        body: JSON.stringify(formData),
       })
-
       if (res.ok) {
         setStatus('success')
         setFormData({ name: '', email: '', company: '', projectType: '', details: '' })
@@ -88,6 +82,11 @@ function ContactSection() {
     } catch {
       setStatus('error')
     }
+  }
+
+  function scrollToForm(e) {
+    e.preventDefault()
+    document.querySelector('#contact form')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 
   return (
@@ -110,18 +109,29 @@ function ContactSection() {
             </p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <ContactDetail label="Email" value="lucim.io.ai@gmail.com" href="mailto:lucim.io.ai@gmail.com" />
-              <ContactDetail label="Book a call" value="Schedule a discovery call" href="#contact" />
+              <ContactDetail
+                label="Email"
+                value="lucim.io.ai@gmail.com"
+                href="mailto:lucim.io.ai@gmail.com"
+              />
+              <ContactDetail
+                label="Book a call"
+                value="Schedule a discovery call"
+                href="https://calendly.com"
+              />
             </div>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <PrimaryButton>Start a project</PrimaryButton>
-              <SecondaryButton>View services</SecondaryButton>
+              <a href="#contact" onClick={scrollToForm}>
+                <PrimaryButton>Start a project</PrimaryButton>
+              </a>
+              <a href="#services">
+                <SecondaryButton>View services</SecondaryButton>
+              </a>
             </div>
           </div>
 
           <div className="rounded-[32px] border border-white/10 bg-[linear-gradient(180deg,rgba(27,8,41,0.92),rgba(10,1,18,0.98))] p-6 shadow-[0_0_80px_rgba(173,78,255,0.08)] backdrop-blur sm:p-8">
-
             {status === 'success' ? (
               <div className="flex h-full flex-col items-center justify-center gap-4 py-16 text-center">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full bg-[#ff58ff]/15">
@@ -131,7 +141,7 @@ function ContactSection() {
                 </div>
                 <h3 className="text-xl font-semibold text-[#fff2ff]">Message sent!</h3>
                 <p className="text-sm text-[#cfa8e8]">
-                  Thanks for reaching out. We'll get back to you within 1–2 business days.
+                  Thanks for reaching out. We will get back to you within 1-2 business days.
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
@@ -146,12 +156,10 @@ function ContactSection() {
                   <Input label="Name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} />
                   <Input label="Email" name="email" type="email" placeholder="you@company.com" value={formData.email} onChange={handleChange} />
                 </div>
-
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Input label="Company" name="company" placeholder="Company or brand" value={formData.company} onChange={handleChange} />
                   <Input label="Project type" name="projectType" placeholder="Website, automation, security" value={formData.projectType} onChange={handleChange} />
                 </div>
-
                 <Textarea
                   label="Project details"
                   name="details"
@@ -159,15 +167,11 @@ function ContactSection() {
                   value={formData.details}
                   onChange={handleChange}
                 />
-
                 {status === 'error' && (
                   <p className="text-sm text-red-400">Something went wrong. Please try again or email us directly.</p>
                 )}
-
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p className="text-sm text-[#cfa8e8]">
-                    We usually respond within 1–2 business days.
-                  </p>
+                  <p className="text-sm text-[#cfa8e8]">We usually respond within 1-2 business days.</p>
                   <PrimaryButton type="submit" className="justify-center" disabled={status === 'loading'}>
                     {status === 'loading' ? 'Sending...' : 'Send inquiry'}
                   </PrimaryButton>
