@@ -42,8 +42,12 @@ function HeroSection() {
           </p>
 
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <PrimaryButton>Get started today</PrimaryButton>
-            <SecondaryButton>View our work</SecondaryButton>
+            <a href="#contact">
+              <PrimaryButton>Get started today</PrimaryButton>
+            </a>
+            <a href="#portfolio">
+              <SecondaryButton>What we can build</SecondaryButton>
+            </a>
           </div>
 
           <div className="mt-16 flex flex-wrap items-center justify-center gap-3 text-sm text-[#d0a7e8]/70 sm:gap-4">
