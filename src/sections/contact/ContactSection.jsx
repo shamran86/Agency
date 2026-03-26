@@ -117,7 +117,7 @@ function ContactSection() {
               <ContactDetail
                 label="Book a call"
                 value="Schedule a discovery call"
-                href="https://calendly.com"
+                href="https://calendly.com/shamranshamu3825/discovery-call"
               />
             </div>
 
