@@ -1,16 +1,6 @@
 import { useState } from 'react'
 import { navigationItems } from '../../../data/siteContent'
 
-function BrandIcon() {
-  return (
-    <a href="/" aria-label="Agency home" className="shrink-0">
-      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-[0_0_30px_7px_rgba(255,255,255,0.35)] transition duration-300 hover:bg-[#f7ebff] hover:shadow-[0_0_30px_14px_rgba(255,255,255,0.45)]">
-        <span className="text-sm font-bold text-[#16001f]">L</span>
-      </div>
-    </a>
-  )
-}
-
 function AnimatedLink({ href, label, onClick }) {
   return (
     <a
@@ -72,7 +62,6 @@ function MobileMenuButton({ open, onClick }) {
 
 function HeroNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
   const closeMenu = () => setIsMenuOpen(false)
   const toggleMenu = () => setIsMenuOpen((open) => !open)
 
@@ -81,7 +70,14 @@ function HeroNavbar() {
       <div className="mx-auto max-w-5xl">
         <nav className="mx-auto flex w-full max-w-fit items-center justify-between rounded-full border border-white/15 bg-[#13051f]/65 px-5 py-4 text-sm text-white backdrop-blur-md sm:px-6 md:min-w-[760px] md:justify-center lg:min-w-[860px]">
           <div className="flex w-full items-center justify-between md:w-auto">
-            <BrandIcon />
+            <a href="/" aria-label="Lucim home" className="shrink-0">
+              <img
+                src="/lucim-logo.png"
+                alt="Lucim.io"
+                className="h-10 w- object-contain"
+                style={{ mixBlendMode: 'screen' }}
+              />
+            </a>
             <MobileMenuButton open={isMenuOpen} onClick={toggleMenu} />
           </div>
 
@@ -92,12 +88,8 @@ function HeroNavbar() {
           </div>
 
           <div className="ml-10 hidden items-center gap-3 md:flex lg:ml-12 lg:gap-4">
-            <a href="#contact">
-              <OutlineButton>Contact</OutlineButton>
-            </a>
-            <a href="#contact">
-              <GlowButton>Get Started</GlowButton>
-            </a>
+            <a href="#contact"><OutlineButton>Contact</OutlineButton></a>
+            <a href="#contact"><GlowButton>Get Started</GlowButton></a>
           </div>
         </nav>
 
@@ -108,13 +100,14 @@ function HeroNavbar() {
         >
           <div className="min-h-0">
             <div className="flex flex-col items-center gap-4 rounded-[28px] border border-white/10 bg-[#090010]/92 px-6 py-6 text-base text-[#f0ddff] backdrop-blur-xl">
+              <img
+                src="/lucim-logo.png"
+                alt="Lucim.io"
+                className="h-10 w-auto object-contain mb-1"
+                style={{ mixBlendMode: 'screen' }}
+              />
               {navigationItems.map((item) => (
-                <a
-                  key={item.label}
-                  className="transition hover:text-white"
-                  href={item.href}
-                  onClick={closeMenu}
-                >
+                <a key={item.label} className="transition hover:text-white" href={item.href} onClick={closeMenu}>
                   {item.label}
                 </a>
               ))}
